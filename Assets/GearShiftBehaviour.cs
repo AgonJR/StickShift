@@ -9,7 +9,7 @@ public class GearShiftBehaviour : MonoBehaviour
 
     void Start()
     {
-        
+        Debug.Log("Hello Banana!");
     }
 
     void Update()
