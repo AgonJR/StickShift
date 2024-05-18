@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GearShiftBehaviour : MonoBehaviour
@@ -7,10 +8,13 @@ public class GearShiftBehaviour : MonoBehaviour
 
     private bool _clutchDown = false;
 
+    [Header("Dev References")]
+    public TMP_Text txtClutchStatus;
+
 
     void Start()
     {
-        Debug.Log("Hello Banana!");
+        //
     }
 
     void Update()
@@ -24,11 +28,13 @@ public class GearShiftBehaviour : MonoBehaviour
         if ( Input.GetMouseButtonDown(0) )
         {
             _clutchDown = true;
+            txtClutchStatus.text = "Clutch: DOWN!";
         }
 
         if ( Input.GetMouseButtonUp(0) )
         {
             _clutchDown = false;
+            txtClutchStatus.text = "Clutch: UP!";
         }
     }
 
@@ -36,7 +42,7 @@ public class GearShiftBehaviour : MonoBehaviour
     {
         if ( _clutchDown )
         {
-            
+
         }
     }
     
