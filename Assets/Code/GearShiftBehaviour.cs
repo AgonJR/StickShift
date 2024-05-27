@@ -7,7 +7,10 @@ public class GearShiftBehaviour : MonoBehaviour
 {
     [Header("Dev References")]
     public TMP_Text txtClutchStatus;
+    public TMP_Text txtGearStatus;
+
     public Gear     currentGear = Gear.NeutralMid;
+    
     public float    mouseSlideThreshold = 10f ;
     public float    gearShiftCooldown   = 0.3f;
 
@@ -136,6 +139,8 @@ public class GearShiftBehaviour : MonoBehaviour
         }
 
         UpdateGearBulbColors();
+        UpdateGearStatusText();
+        
         StartCoroutine(ResetGearShiftDelay());
     }
 
@@ -152,6 +157,11 @@ public class GearShiftBehaviour : MonoBehaviour
         {
             GearBulbRenders[i].material = currentGear == (Gear) i ? SelectedGearBulbColor : DefaultGearBulbColour;
         }
+    }
+
+    private void UpdateGearStatusText()
+    {
+        txtGearStatus.text = "G: " + currentGear;
     }
 
 }
