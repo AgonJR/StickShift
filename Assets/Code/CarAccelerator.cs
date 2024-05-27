@@ -1,9 +1,8 @@
 using UnityEngine;
+using TMPro;
 
 public class CarAccelerator : MonoBehaviour
 {
-    public Transform carTransform;
-
     [Space]
     [Header("Acceleration Per Gear")]
     public float accelerationNuetral    = 0.0f;
@@ -16,6 +15,10 @@ public class CarAccelerator : MonoBehaviour
 
     [Space]
     public float decelerationFlat       = 1.0f;
+    
+    [Space]
+    [Header("Dev References")]
+    public TMP_Text txtCarSpeed;
 
     // //To Do - Implement a Curve instead of a set value
     // [Space]
@@ -48,6 +51,9 @@ public class CarAccelerator : MonoBehaviour
     {
         Process_Acceleration();
         Process_Movement();
+    
+        UpdateHUD_Speed();
+
         Process_Deceleration();
     }
 
@@ -100,6 +106,12 @@ public class CarAccelerator : MonoBehaviour
         {
             transform.Translate(Vector3.forward * _carSpeed * Time.deltaTime);
         }
+
+    }
+
+    private void UpdateHUD_Speed()
+    {
+        txtCarSpeed.text = "Speed: " + _carSpeed.ToString("0.00");
     }
 
     private float EvaluateGearAcceleration()
